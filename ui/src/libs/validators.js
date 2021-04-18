@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-08 17:09:14
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\libs\validators.js
+ * @FilePath: \ui\src\libs\validators.js
  */
 export const selectNumberValidate = (rule, value, callback) => {
     if (!value) {

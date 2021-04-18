@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-08 17:17:02
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\gloal\VideoPlay.vue
+ * @FilePath: \ui\src\components\gloal\VideoPlay.vue
 -->
 <template>
     <el-dialog title="播放视频" v-model="show" destroy-on-close width="550px">

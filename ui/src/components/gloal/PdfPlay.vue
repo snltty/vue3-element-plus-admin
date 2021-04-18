@@ -2,10 +2,10 @@
  * @Author: xr
  * @Date: 2021-04-05 15:50:11
  * @LastEditors: xr
- * @LastEditTime: 2021-04-05 16:20:09
+ * @LastEditTime: 2021-04-18 15:07:08
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\gloal\PdfPlay.vue
+ * @FilePath: \ui\src\components\gloal\PdfPlay.vue
 -->
 <template>
     <el-dialog title="查看PDF" v-model="show" destroy-on-close width="50%" top="1vh">

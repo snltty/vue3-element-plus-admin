@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-06 14:23:35
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\tabs\btnMove.js
+ * @FilePath: \ui\src\components\tabs\btnMove.js
  */
 
 import { reactive, nextTick, onUnmounted } from 'vue'

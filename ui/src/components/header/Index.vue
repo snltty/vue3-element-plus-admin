@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-31 09:25:50
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\header\Index.vue
+ * @FilePath: \ui\src\components\header\Index.vue
 -->
 <template>
     <header class="flex">

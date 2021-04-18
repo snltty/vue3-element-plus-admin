@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-31 09:31:27
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\libs\urlHelper.js
+ * @FilePath: \ui\src\libs\urlHelper.js
  */
 class UrlHelper {
     parseUrl (url) {

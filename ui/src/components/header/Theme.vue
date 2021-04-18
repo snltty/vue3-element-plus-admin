@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-26 15:26:53
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\components\header\Theme.vue
+ * @FilePath: \ui\src\components\header\Theme.vue
 -->
 <template>
     <div class="wrap">
@@ -92,7 +92,7 @@ export default {
             return clusters
         }
         const setCss = (color) => {
-            localStorage.setItem('admin-ui-theme-color', color);
+            localStorage.setItem('ui-theme-color', color);
             let css = `:root{
                 --main-color:#${color};
                 --header-bg-color:#${color};
@@ -108,7 +108,7 @@ export default {
 
         const setTheme = async (color) => {
             if (!color) {
-                color = localStorage.getItem('admin-ui-theme-color');
+                color = localStorage.getItem('ui-theme-color');
                 if (color != 'undefined') {
                     state.color = `#${color}`;
                 }

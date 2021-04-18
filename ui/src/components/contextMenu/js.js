@@ -2,11 +2,12 @@
  * @Author: xr
  * @Date: 2021-03-20 15:31:29
  * @LastEditors: xr
- * @LastEditTime: 2021-03-20 16:19:30
+ * @LastEditTime: 2021-04-18 15:06:06
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\components\ContextMenu\js.js
+ * @FilePath: \ui\src\components\contextMenu\js.js
  */
+
 import { inject, onUnmounted, provide, reactive } from 'vue'
 
 const contextMenuName = Symbol();

@@ -2,13 +2,12 @@
  * @Author: xr
  * @Date: 2021-03-31 15:39:20
  * @LastEditors: xr
- * @LastEditTime: 2021-04-09 09:25:32
+ * @LastEditTime: 2021-04-18 15:18:22
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\layout\gloal\TableSearch.vue
+ * @FilePath: \ui\src\components\layout\gloal\TableSearch.vue
 -->
 <template>
-
     <el-form :inline="true" :model="data" class="demo-form-inline">
         <slot></slot>
         <el-form-item :label="item.text" v-for="(item,name,index) in data" :key="index" class="w-search">
@@ -41,10 +40,10 @@ export default {
         const data = ref(props.data);
 
         /*
-                'Name': { value: '', text: '名称', condition: 'like' },
-                'Phone': { value: '', text: '手机', condition: 'like' },
-                'IsDisabled': {
-                    value: -1, text: '状态', condition: '=', type: 'select', unvalue: -1, options: [
+                'name': { value: '', text: '名称'},
+                'phone': { value: '', text: '手机'},
+                'disabled': {
+                    value: -1, text: '状态', type: 'select', unvalue: -1, options: [
                         { value: -1, text: '全部' },
                         { value: 0, text: '启用' },
                         { value: 1, text: '禁用' },
@@ -55,17 +54,11 @@ export default {
 
         const getParams = () => {
             let arr = data.value;
-            let res = [];
+            let res = {};
             for (let j in arr) {
                 let item = arr[j];
-                if (item.condition && item.value !== '' && item.unvalue !== item.value) {
-                    res.push({
-                        Option: 'AND',
-                        FieldName: j,
-                        Condition: item.condition,
-                        Value: item.value,
-                        Child: []
-                    });
+                if (item.value !== '' && item.unvalue !== item.value) {
+                    res[j] = props.defaultSearch;
                 }
             }
             return res;

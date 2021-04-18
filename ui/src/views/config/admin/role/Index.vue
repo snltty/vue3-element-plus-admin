@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 11:10:14
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 10:47:58
+ * @LastEditTime: 2021-04-18 15:10:00
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\config\admin\role\Index.vue
@@ -16,7 +16,7 @@
             <el-button type="primary" size="mini" @click="handleAdd" icon="el-icon-circle-plus">添加</el-button>
         </template>
         <template v-slot:body>
-            <el-table v-loading="loading" :data="page.Data" size="mini" border height='100%' stripe>
+            <el-table v-loading="loading" :data="page.rows" size="mini" border height='100%' stripe>
                 <el-table-column prop="ID" label="编号" width="100">
                 </el-table-column>
                 <el-table-column prop="Name" label="名称">
@@ -52,10 +52,10 @@ export default {
             showAdd: false,
             loading: true,
             searchData: {
-                'Name': { value: '', text: '名称', condition: 'like' }
+                'name': { value: '', text: '名称', condition: 'like' }
             },
             page: {
-                Count: 0, PageSize: 20, PageIndex: 1, Data: []
+                count: 0, ps: 20, p: 1, rows: []
             }
         });
 
@@ -67,7 +67,7 @@ export default {
         onMounted(() => { getData(); });
 
         const onPageChange = (p) => {
-            state.page.PageIndex = p;
+            state.page.p = p;
             getData();
         }
 

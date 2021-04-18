@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-02 12:46:55
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\upload\oss.js
+ * @FilePath: \ui\src\components\upload\oss.js
  */
 import OSS from 'ali-oss'
 import { getSts } from '../../apis/oss'

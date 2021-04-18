@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-10 09:52:00
  * @LastEditors: xr
- * @LastEditTime: 2021-04-11 21:18:42
+ * @LastEditTime: 2021-04-18 15:08:45
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\接口怎么看.md
@@ -39,8 +39,6 @@
     3、看login.js 具体的接口
     4、比如 router.post('/login', function (req, res, next) {})
     5、那最后的地址就是  /private/login/login  
-
-/public     前台接口，和后端结构一致
 
 /services   访问数据的一些方法，每个表有对应文件去操作
 

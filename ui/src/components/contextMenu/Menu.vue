@@ -2,10 +2,10 @@
  * @Author: xr
  * @Date: 2021-03-20 15:29:50
  * @LastEditors: xr
- * @LastEditTime: 2021-03-22 11:20:15
+ * @LastEditTime: 2021-04-18 15:06:13
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\components\contextMenu\Menu.vue
+ * @FilePath: \ui\src\components\contextMenu\Menu.vue
 -->
 <template>
     <div class="contextmenu-wrap" :style="{left:`${x}px`,top:`${y}px`}" v-if="show">
@@ -13,7 +13,7 @@
             <li v-for="(item,index) in data" :key="index" @click="handleClickItem(index)">{{item.text}}</li>
         </ul>
     </div>
-</template>
+</template> 
 
 <script>
 import { toRefs } from 'vue';

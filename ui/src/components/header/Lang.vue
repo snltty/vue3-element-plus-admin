@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-26 15:49:32
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\components\header\Lang.vue
+ * @FilePath: \ui\src\components\header\Lang.vue
 -->
 <template>
     <div class="wrap">

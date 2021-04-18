@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-23 21:28:03
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:24:06
+ * @LastEditTime: 2021-04-18 15:04:43
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\router\eachs\login.js
@@ -23,9 +23,6 @@ const updateLoginInfo = () => {
                 roles: []
             }
         })
-        // getLoginInfo().then(({ data, res }) => {
-        //     resolve(data);
-        // }).catch(reject);
     });
 }
 

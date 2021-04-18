@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-26 15:04:03
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\lang\index.js
+ * @FilePath: \ui\src\lang\index.js
  */
 const files = require.context('.', false, /\.js$/);
 const modules = {};

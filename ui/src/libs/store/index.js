@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-20 22:08:15
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\libs\store\index.js
+ * @FilePath: \ui\src\libs\store\index.js
  */
 
 import { useStore, mapState, mapActions } from 'vuex'

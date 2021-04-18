@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-22 15:35:32
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\router\eachs\index.js
+ * @FilePath: \ui\src\router\eachs\index.js
  */
 const files = require.context('.', false, /\.js$/);
 const modules = {};

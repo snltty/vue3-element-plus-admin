@@ -2,10 +2,10 @@
  * @Author: xr
  * @Date: 2021-04-06 18:57:23
  * @LastEditors: xr
- * @LastEditTime: 2021-04-08 17:44:57
+ * @LastEditTime: 2021-04-18 15:06:30
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\gloal\ImagePlay.vue
+ * @FilePath: \ui\src\components\gloal\ImagePlay.vue
 -->
 <template>
     <el-image-viewer v-if="visible" :url-list="data" @close="onClose"></el-image-viewer>
@@ -16,7 +16,7 @@
             </slot>
         </template>
     </span>
-</template>
+</template> 
 <script>
 import { ref, watch } from 'vue'
 export default {

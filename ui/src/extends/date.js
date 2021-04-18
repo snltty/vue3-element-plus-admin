@@ -2,11 +2,12 @@
  * @Author: xr
  * @Date: 2021-04-08 17:08:40
  * @LastEditors: xr
- * @LastEditTime: 2021-04-08 17:08:41
+ * @LastEditTime: 2021-04-18 15:05:35
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\extends\date.js
+ * @FilePath: \ui\src\extends\date.js
  */
+
 Date.prototype.format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1,                 //月份 

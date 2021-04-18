@@ -1,226 +1,226 @@
 {
-  "id": "2444732",
-  "name": "admin-ui",
-  "font_family": "iconfont",
-  "css_prefix_text": "icon",
-  "description": "后台界面项目",
-  "glyphs": [
-    {
-      "icon_id": "2697239",
-      "name": "PDF",
-      "font_class": "PDF",
-      "unicode": "e7eb",
-      "unicode_decimal": 59371
-    },
-    {
-      "icon_id": "18246313",
-      "name": "mp4",
-      "font_class": "mp4",
-      "unicode": "e6b2",
-      "unicode_decimal": 59058
-    },
-    {
-      "icon_id": "924718",
-      "name": "文件",
-      "font_class": "wenjian",
-      "unicode": "e623",
-      "unicode_decimal": 58915
-    },
-    {
-      "icon_id": "1132268",
-      "name": "xls",
-      "font_class": "xlsx",
-      "unicode": "e602",
-      "unicode_decimal": 58882
-    },
-    {
-      "icon_id": "3014822",
-      "name": "exe",
-      "font_class": "exe",
-      "unicode": "e660",
-      "unicode_decimal": 58976
-    },
-    {
-      "icon_id": "3323516",
-      "name": "zip",
-      "font_class": "zip",
-      "unicode": "e601",
-      "unicode_decimal": 58881
-    },
-    {
-      "icon_id": "5544385",
-      "name": "word",
-      "font_class": "word",
-      "unicode": "e66c",
-      "unicode_decimal": 58988
-    },
-    {
-      "icon_id": "6827454",
-      "name": "wav",
-      "font_class": "wav",
-      "unicode": "e7b9",
-      "unicode_decimal": 59321
-    },
-    {
-      "icon_id": "7234907",
-      "name": "png",
-      "font_class": "png",
-      "unicode": "e85b",
-      "unicode_decimal": 59483
-    },
-    {
-      "icon_id": "11472875",
-      "name": "JPG",
-      "font_class": "JPG",
-      "unicode": "e68a",
-      "unicode_decimal": 59018
-    },
-    {
-      "icon_id": "12084336",
-      "name": "apk",
-      "font_class": "apk",
-      "unicode": "e603",
-      "unicode_decimal": 58883
-    },
-    {
-      "icon_id": "12212127",
-      "name": "txt",
-      "font_class": "txt",
-      "unicode": "e64b",
-      "unicode_decimal": 58955
-    },
-    {
-      "icon_id": "13250386",
-      "name": "rar",
-      "font_class": "rar",
-      "unicode": "e6f1",
-      "unicode_decimal": 59121
-    },
-    {
-      "icon_id": "14892290",
-      "name": "svg",
-      "font_class": "svg",
-      "unicode": "e604",
-      "unicode_decimal": 58884
-    },
-    {
-      "icon_id": "14960845",
-      "name": "json",
-      "font_class": "json",
-      "unicode": "e61f",
-      "unicode_decimal": 58911
-    },
-    {
-      "icon_id": "15942115",
-      "name": "GIF",
-      "font_class": "GIF",
-      "unicode": "e684",
-      "unicode_decimal": 59012
-    },
-    {
-      "icon_id": "19012233",
-      "name": "7z",
-      "font_class": "7z",
-      "unicode": "e615",
-      "unicode_decimal": 58901
-    },
-    {
-      "icon_id": "19457858",
-      "name": "ppt",
-      "font_class": "ppt",
-      "unicode": "e638",
-      "unicode_decimal": 58936
-    },
-    {
-      "icon_id": "8054249",
-      "name": "视频课程",
-      "font_class": "shipin",
-      "unicode": "e60a",
-      "unicode_decimal": 58890
-    },
-    {
-      "icon_id": "16667654",
-      "name": "认证",
-      "font_class": "renzheng",
-      "unicode": "e7ab",
-      "unicode_decimal": 59307
-    },
-    {
-      "icon_id": "18648360",
-      "name": "资源 375",
-      "font_class": "ziyuan375",
-      "unicode": "e61e",
-      "unicode_decimal": 58910
-    },
-    {
-      "icon_id": "20389829",
-      "name": "客户端",
-      "font_class": "kehuduan1",
-      "unicode": "e685",
-      "unicode_decimal": 59013
-    },
-    {
-      "icon_id": "15800661",
-      "name": "接口",
-      "font_class": "tubiaozhengli-259",
-      "unicode": "e663",
-      "unicode_decimal": 58979
-    },
-    {
-      "icon_id": "10593752",
-      "name": "用户,管理员_jurassic",
-      "font_class": "jurassic_admin",
-      "unicode": "e696",
-      "unicode_decimal": 59030
-    },
-    {
-      "icon_id": "17029861",
-      "name": "-角色管理",
-      "font_class": "-jiaoseguanli",
-      "unicode": "e686",
-      "unicode_decimal": 59014
-    },
-    {
-      "icon_id": "1172721",
-      "name": "图片",
-      "font_class": "tupian",
-      "unicode": "e64a",
-      "unicode_decimal": 58954
-    },
-    {
-      "icon_id": "16364341",
-      "name": "全部",
-      "font_class": "quanbu1",
-      "unicode": "e635",
-      "unicode_decimal": 58933
-    },
-    {
-      "icon_id": "4237369",
-      "name": "首页",
-      "font_class": "shouye3",
-      "unicode": "e62b",
-      "unicode_decimal": 58923
-    },
-    {
-      "icon_id": "2682152",
-      "name": "表格",
-      "font_class": "biaoge3",
-      "unicode": "e6fc",
-      "unicode_decimal": 59132
-    },
-    {
-      "icon_id": "11391554",
-      "name": "皮肤",
-      "font_class": "pifu",
-      "unicode": "e63c",
-      "unicode_decimal": 58940
-    },
-    {
-      "icon_id": "18429626",
-      "name": "权限",
-      "font_class": "quanxian",
-      "unicode": "e600",
-      "unicode_decimal": 58880
-    }
-  ]
+    "id": "2444732",
+    "name": "ui",
+    "font_family": "iconfont",
+    "css_prefix_text": "icon",
+    "description": "后台界面项目",
+    "glyphs": [
+        {
+            "icon_id": "2697239",
+            "name": "PDF",
+            "font_class": "PDF",
+            "unicode": "e7eb",
+            "unicode_decimal": 59371
+        },
+        {
+            "icon_id": "18246313",
+            "name": "mp4",
+            "font_class": "mp4",
+            "unicode": "e6b2",
+            "unicode_decimal": 59058
+        },
+        {
+            "icon_id": "924718",
+            "name": "文件",
+            "font_class": "wenjian",
+            "unicode": "e623",
+            "unicode_decimal": 58915
+        },
+        {
+            "icon_id": "1132268",
+            "name": "xls",
+            "font_class": "xlsx",
+            "unicode": "e602",
+            "unicode_decimal": 58882
+        },
+        {
+            "icon_id": "3014822",
+            "name": "exe",
+            "font_class": "exe",
+            "unicode": "e660",
+            "unicode_decimal": 58976
+        },
+        {
+            "icon_id": "3323516",
+            "name": "zip",
+            "font_class": "zip",
+            "unicode": "e601",
+            "unicode_decimal": 58881
+        },
+        {
+            "icon_id": "5544385",
+            "name": "word",
+            "font_class": "word",
+            "unicode": "e66c",
+            "unicode_decimal": 58988
+        },
+        {
+            "icon_id": "6827454",
+            "name": "wav",
+            "font_class": "wav",
+            "unicode": "e7b9",
+            "unicode_decimal": 59321
+        },
+        {
+            "icon_id": "7234907",
+            "name": "png",
+            "font_class": "png",
+            "unicode": "e85b",
+            "unicode_decimal": 59483
+        },
+        {
+            "icon_id": "11472875",
+            "name": "JPG",
+            "font_class": "JPG",
+            "unicode": "e68a",
+            "unicode_decimal": 59018
+        },
+        {
+            "icon_id": "12084336",
+            "name": "apk",
+            "font_class": "apk",
+            "unicode": "e603",
+            "unicode_decimal": 58883
+        },
+        {
+            "icon_id": "12212127",
+            "name": "txt",
+            "font_class": "txt",
+            "unicode": "e64b",
+            "unicode_decimal": 58955
+        },
+        {
+            "icon_id": "13250386",
+            "name": "rar",
+            "font_class": "rar",
+            "unicode": "e6f1",
+            "unicode_decimal": 59121
+        },
+        {
+            "icon_id": "14892290",
+            "name": "svg",
+            "font_class": "svg",
+            "unicode": "e604",
+            "unicode_decimal": 58884
+        },
+        {
+            "icon_id": "14960845",
+            "name": "json",
+            "font_class": "json",
+            "unicode": "e61f",
+            "unicode_decimal": 58911
+        },
+        {
+            "icon_id": "15942115",
+            "name": "GIF",
+            "font_class": "GIF",
+            "unicode": "e684",
+            "unicode_decimal": 59012
+        },
+        {
+            "icon_id": "19012233",
+            "name": "7z",
+            "font_class": "7z",
+            "unicode": "e615",
+            "unicode_decimal": 58901
+        },
+        {
+            "icon_id": "19457858",
+            "name": "ppt",
+            "font_class": "ppt",
+            "unicode": "e638",
+            "unicode_decimal": 58936
+        },
+        {
+            "icon_id": "8054249",
+            "name": "视频课程",
+            "font_class": "shipin",
+            "unicode": "e60a",
+            "unicode_decimal": 58890
+        },
+        {
+            "icon_id": "16667654",
+            "name": "认证",
+            "font_class": "renzheng",
+            "unicode": "e7ab",
+            "unicode_decimal": 59307
+        },
+        {
+            "icon_id": "18648360",
+            "name": "资源 375",
+            "font_class": "ziyuan375",
+            "unicode": "e61e",
+            "unicode_decimal": 58910
+        },
+        {
+            "icon_id": "20389829",
+            "name": "客户端",
+            "font_class": "kehuduan1",
+            "unicode": "e685",
+            "unicode_decimal": 59013
+        },
+        {
+            "icon_id": "15800661",
+            "name": "接口",
+            "font_class": "tubiaozhengli-259",
+            "unicode": "e663",
+            "unicode_decimal": 58979
+        },
+        {
+            "icon_id": "10593752",
+            "name": "用户,管理员_jurassic",
+            "font_class": "jurassic_admin",
+            "unicode": "e696",
+            "unicode_decimal": 59030
+        },
+        {
+            "icon_id": "17029861",
+            "name": "-角色管理",
+            "font_class": "-jiaoseguanli",
+            "unicode": "e686",
+            "unicode_decimal": 59014
+        },
+        {
+            "icon_id": "1172721",
+            "name": "图片",
+            "font_class": "tupian",
+            "unicode": "e64a",
+            "unicode_decimal": 58954
+        },
+        {
+            "icon_id": "16364341",
+            "name": "全部",
+            "font_class": "quanbu1",
+            "unicode": "e635",
+            "unicode_decimal": 58933
+        },
+        {
+            "icon_id": "4237369",
+            "name": "首页",
+            "font_class": "shouye3",
+            "unicode": "e62b",
+            "unicode_decimal": 58923
+        },
+        {
+            "icon_id": "2682152",
+            "name": "表格",
+            "font_class": "biaoge3",
+            "unicode": "e6fc",
+            "unicode_decimal": 59132
+        },
+        {
+            "icon_id": "11391554",
+            "name": "皮肤",
+            "font_class": "pifu",
+            "unicode": "e63c",
+            "unicode_decimal": 58940
+        },
+        {
+            "icon_id": "18429626",
+            "name": "权限",
+            "font_class": "quanxian",
+            "unicode": "e600",
+            "unicode_decimal": 58880
+        }
+    ]
 }

@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-23 19:27:30
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\components\layout\gloal\index.js
+ * @FilePath: \ui\src\components\layout\gloal\index.js
  */
 const files = require.context('.', false, /\.vue$/);
 export default {

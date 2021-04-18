@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-31 09:34:07
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\libs\cookie.js
+ * @FilePath: \ui\src\libs\cookie.js
  */
 class Cookie {
     constructor(name) {

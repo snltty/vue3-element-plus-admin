@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-04 14:34:54
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\menu\EachMenu.vue
+ * @FilePath: \ui\src\components\menu\EachMenu.vue
 -->
 <template>
     <section class="ul">

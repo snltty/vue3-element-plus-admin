@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-12 09:26:26
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\menu\Index.vue
+ * @FilePath: \ui\src\components\menu\Index.vue
 -->
 <template>
     <section class="menu relative main-left-menu">

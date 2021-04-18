@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 11:10:14
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 10:46:26
+ * @LastEditTime: 2021-04-18 15:11:04
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\config\admin\admin\Index.vue
@@ -16,7 +16,7 @@
             <el-button type="primary" size="mini" @click="handleAdd" icon="el-icon-circle-plus">添加</el-button>
         </template>
         <template v-slot:body>
-            <el-table v-loading="loading" :data="page.Data" size="mini" border height='100%' stripe>
+            <el-table v-loading="loading" :data="page.id" size="mini" border height='100%' stripe>
                 <el-table-column prop="ID" label="编号" width="100"></el-table-column>
                 <el-table-column prop="Name" label="名称" width="100"></el-table-column>
                 <el-table-column prop="LoginName" label="登录名" width="140"></el-table-column>
@@ -58,16 +58,14 @@ export default {
             showSetRoles: false,
             loading: true,
             searchData: {
-                'Name': { value: '', text: '名称', condition: 'like' },
-                'LoginName': { value: '', text: '登录名', condition: 'like' },
-                'Phone': { value: '', text: '手机', condition: 'like' },
+                'username': { value: '', text: '名称', condition: 'like' }
             },
             page: {
-                Count: 0, PageSize: 20, PageIndex: 1, Data: []
+                count: 0, ps: 20, p: 1, rows: []
             }
         });
         const onPageChange = (p) => {
-            state.page.PageIndex = p;
+            state.page.p = p;
             getData();
         }
 
@@ -82,10 +80,10 @@ export default {
             state.loading = true;
         }
 
-        const addEditData = ref({ ID: 0 });
+        const addEditData = ref({ id: 0 });
         provide('add-edit-data', addEditData)
         const handleAdd = () => {
-            addEditData.value = { ID: 0 };
+            addEditData.value = { id: 0 };
             state.showAdd = true;
         }
         const handleEdit = (row) => {

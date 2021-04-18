@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 19:17:44
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:09:23
+ * @LastEditTime: 2021-04-18 15:18:42
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\layout\gloal\TableView.vue
@@ -10,7 +10,7 @@
 <template>
     <div class="h-100 relative">
         <div class="absolute  flex flex-column flex-nowrap">
-            <div class="table-search">
+            <div class="table-search" v-if="search">
                 <slot name="search"></slot>
             </div>
             <div class="table-head" v-if="head">
@@ -31,6 +31,7 @@
 export default {
     props: {
         head: { type: Boolean, default: true },
+        search: { type: Boolean, default: true },
     },
     name: 'TableView'
 }

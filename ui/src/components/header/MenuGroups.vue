@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-04-03 22:05:12
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\header\MenuGroups.vue
+ * @FilePath: \ui\src\components\header\MenuGroups.vue
 -->
 <template>
     <div>

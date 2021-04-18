@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 16:04:17
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:08:00
+ * @LastEditTime: 2021-04-18 15:15:34
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\gloal\ChoiceDialog.vue
@@ -15,7 +15,7 @@
                     <TableSearch ref="searchDom" :data="searchData" @submit="getData"></TableSearch>
                 </template>
                 <template v-slot:body>
-                    <el-table ref="tableDom" v-loading="loading" :data="page.Data" :row-key="key" @selection-change="handleSelectionChange" size="mini" border height='100%' stripe>
+                    <el-table ref="tableDom" v-loading="loading" :data="page.rows" :row-key="key" @selection-change="handleSelectionChange" size="mini" border height='100%' stripe>
                         <template v-if="selection == 'multiple'">
                             <el-table-column type="selection" width="55" :reserve-selection="true"></el-table-column>
                         </template>
@@ -59,7 +59,7 @@ export default {
         searchData: { type: Object, default: {} },
         title: { type: String, default: '' },
         selection: { type: String, default: 'multiple' }, // single
-        defaultSearch: { type: Array, default: [] },
+        defaultSearch: { type: Array, default: {} },
         disabled: { type: Boolean, default: false },
     },
     emits: ['update:modelValue', 'success'],
@@ -95,30 +95,23 @@ export default {
         let selections = [];
         const getData = () => {
             state.loading = true;
-            let params = [];
+            let params = {};
             if (defaultValue) {
-                params.push({
-                    Option: 'AND',
-                    FieldName: key,
-                    Condition: 'in',
-                    Value: defaultValue,
-                    Child: []
-                });
+                params[key] == defaultValue;
             } else {
-                params = searchDom.value.getParams()
+                params = searchDom.value.getParams();
                 if (defaultSearch && defaultSearch.length > 0) {
-                    params = params.concat(defaultSearch)
+                    params = Object.assign(params, defaultSearch)
                 }
-                if (props.defaultSearch && props.defaultSearch.length > 0) {
-                    params = params.concat(props.defaultSearch)
+                if (props.defaultSearch) {
+                    params = Object.assign(props.defaultSearch);
                 }
             }
-            console.dir(state.page);
             api(state.page.p, state.page.ps, `${key} DESC`, params).then(({ data, res }) => {
                 if (data.code == 0) {
                     state.page = data.data;
-                    if (defaultValue && data.data.data.length > 0) {
-                        handleUpdateValue(data.data.data);
+                    if (defaultValue && data.data.rows.length > 0) {
+                        handleUpdateValue(data.data.rows);
                     }
                 }
                 state.loading = false;

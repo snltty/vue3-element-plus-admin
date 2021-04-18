@@ -2,10 +2,10 @@
  * @Author: xr
  * @Date: 2021-04-05 15:50:11
  * @LastEditors: xr
- * @LastEditTime: 2021-04-08 17:16:36
+ * @LastEditTime: 2021-04-18 15:06:41
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \web.admin.vue3\src\components\gloal\MusicPlay.vue
+ * @FilePath: \ui\src\components\gloal\MusicPlay.vue
 -->
 <template>
     <el-dialog title="播放音频" v-model="show" destroy-on-close width="400px">
@@ -18,7 +18,7 @@
     <a href="javascript:;" v-if="url" @click="handlePlay">
         <slot><i class="el-icon-video-play"></i></slot>
     </a>
-</template>
+</template> 
 <script>
 import { reactive, toRefs, watch } from 'vue'
 export default {

@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-03-25 00:25:26
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \admin-ui\src\store\modules\tabs.js
+ * @FilePath: \ui\src\store\modules\tabs.js
  */
 import router from '../../router/index'
 
