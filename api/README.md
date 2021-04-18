@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-10 09:52:00
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:58:06
+ * @LastEditTime: 2021-04-18 15:59:02
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\README.md
@@ -60,7 +60,6 @@ node index.js
 /auth       登录认证需要的一些方法
                 adminAuth.js   后台登录验证
                 cache.js          缓存方法，用来保存登录信息
-                loginAuth.js    前台登录验证
                 token.js          生成登录 token的方法
 
 /uploads
