@@ -2,11 +2,24 @@
  * @Author: xr
  * @Date: 2021-04-10 09:52:00
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:08:45
+ * @LastEditTime: 2021-04-18 15:52:31
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \api\接口怎么看.md
+ * @FilePath: \api\README.md
 -->
+# 运行之前
+```
+    创建一个数据库，在这个数据库执行 sql.sql
+    
+    然后修改config.js里的配置
+
+    然后执行 npm install    安装依赖
+```
+# 运行
+```
+node index.js
+```
+
 # http 状态码
 ```
 401 为请求失败，需要登录，但是没登录
