@@ -2,12 +2,14 @@
  * @Author: xr
  * @Date: 2021-04-10 09:52:00
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:52:31
+ * @LastEditTime: 2021-04-18 15:58:06
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\README.md
 -->
-# 运行之前
+# element-plus vue3.x 后台界面的接口 nodejs+mysql
+
+## 运行之前
 ```
     创建一个数据库，在这个数据库执行 sql.sql
     
@@ -15,17 +17,17 @@
 
     然后执行 npm install    安装依赖
 ```
-# 运行
+## 运行
 ```
 node index.js
 ```
 
-# http 状态码
+## http 状态码
 ```
 401 为请求失败，需要登录，但是没登录
 200 为请求成功
 ```
-# 全局数据返回格式
+## 全局数据返回格式
 ```
 {
     code:0,  
@@ -44,7 +46,7 @@ node index.js
 }
 ```
 
-# 接口结构
+## 接口结构
 ```
 /private  后台接口
     1、index.js   总线， 其它的不同的文件名就是一个路由  
