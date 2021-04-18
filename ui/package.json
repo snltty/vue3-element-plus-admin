@@ -1,0 +1,38 @@
+{
+    "name": "vue3-element-plus-admin",
+    "desc": "后台界面",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build"
+    },
+    "dependencies": {
+        "@kangc/v-md-editor": "^2.2.2",
+        "axios": "^0.21.1",
+        "core-js": "^3.6.5",
+        "echarts": "^5.0.2",
+        "element-plus": "^1.0.2-beta.35",
+        "vue": "^3.0.0",
+        "vue-i18n": "^9.0.0",
+        "vue-router": "^4.0.0-0",
+        "vue3-editor": "0.1.0-alpha.3",
+        "vue3-pdf": "^4.2.6",
+        "vuex": "^4.0.0-0"
+    },
+    "devDependencies": {
+        "vue-loader-v16": "^16.0.0-beta.5.4",
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-plugin-vuex": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "@vue/compiler-sfc": "^3.0.0",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}
