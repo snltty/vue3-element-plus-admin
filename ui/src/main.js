@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 12:05:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:17:29
+ * @LastEditTime: 2021-04-18 16:43:31
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\main.js
@@ -28,12 +28,12 @@ app.use(router);
 import directive from './directive/index'
 directive(app);
 
-import VMdEditor from '@kangc/v-md-editor';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
-import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
-import '@kangc/v-md-editor/lib/theme/style/github.css';
-VMdEditor.use(githubTheme);
-app.use(VMdEditor);
+// import VMdEditor from '@kangc/v-md-editor';
+// import '@kangc/v-md-editor/lib/style/base-editor.css';
+// import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+// import '@kangc/v-md-editor/lib/theme/style/github.css';
+// VMdEditor.use(githubTheme);
+// app.use(VMdEditor);
 
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
