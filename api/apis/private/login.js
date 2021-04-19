@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 22:31:38
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 14:55:35
+ * @LastEditTime: 2021-04-19 10:42:00
  * @version: v1.0.0
  * @Descripttion: 后端登录相关接口
  * @FilePath: \api\apis\private\login.js
@@ -10,7 +10,7 @@
 const express = require('express');
 const router = express.Router();
 const md5 = require('md5-node');
-const { getAdminByUsername, getAdminApis } = require('../../services/admin');
+const { getAdminByUsername, getAdminMenus } = require('../../services/admin');
 const { encodeToken } = require('../../auth/token')
 const { setLoginCache } = require('../../auth/cache')
 const adminAuth = require('../../auth/adminAuth')
@@ -37,15 +37,14 @@ router.post('/login', function (req, res, next) {
             };
             //生成一下token
             encodeToken(adminInfo.id).then((token) => {
-                //获取到 api权限列表
-                getAdminApis(adminInfo.id).then((apis) => {
+                //获取到 菜单权限列表
+                getAdminMenus(adminInfo.id).then((menus) => {
                     //保存一些数据到缓存
-                    setLoginCache(token, { ...adminInfo, apis });
+                    setLoginCache(token, { ...adminInfo, menus });
                     res.send({
                         code: 0, data: {
-                            admin: adminInfo,
+                            admin: { ...adminInfo, menus },
                             token: token,
-                            apis
                         }, msg: ''
                     });
                 });

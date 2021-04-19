@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-10 09:52:00
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:59:02
+ * @LastEditTime: 2021-04-19 10:27:46
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\README.md
@@ -11,7 +11,8 @@
 
 ## 运行之前
 ```
-    创建一个数据库，在这个数据库执行 sql.sql
+    登录mysql               (mysql -u root -p)
+    执行sql初始化数据库     (soure C:xxx\vue3-element-plus-admin\api\sql.sql)
     
     然后修改config.js里的配置
 

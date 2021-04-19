@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 12:53:09
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:03:37
+ * @LastEditTime: 2021-04-19 17:09:20
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\libs\request\index.js
@@ -41,6 +41,12 @@ export default class Request {
     }
     post ({ url = '', data = {}, params = {} }) {
         return this.instance.post(this._parseParams(url, params), data);
+    }
+    upload ({ url = '', data = {}, params = {} }) {
+        return this.instance.post(this._parseParams(url, params), data, {
+            processData: false,// 告诉axios不要去处理发送的数据(重要参数)
+            contentType: false,   // 告诉axios不要去设置Content-Type请求头
+        });
     }
     _parseParams (url, params) {
         let [path, query] = url.split('?');

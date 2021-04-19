@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 12:43:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:22:15
+ * @LastEditTime: 2021-04-19 16:30:11
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\store\modules\login.js
@@ -16,14 +16,13 @@ const defaultLoginInfo = JSON.parse(sessionStorage.getItem('loginInfo') || JSON.
         avatar: '',
         admin: false,
         superadmin: false,
-        roles: [],
         menus: []
     }
 }));
 
 const state = {
     loginInfo: JSON.parse(JSON.stringify(defaultLoginInfo)),
-    token: sessionStorage.getItem('toten') || ''
+    token: sessionStorage.getItem('token') || ''
 }
 
 console.timeEnd('login-store初始化时间')

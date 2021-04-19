@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-10 21:48:08
  * @LastEditors: xr
- * @LastEditTime: 2021-04-11 15:46:34
+ * @LastEditTime: 2021-04-19 17:20:56
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\apis\private\admin.js
@@ -49,8 +49,8 @@ router.post('/delete', adminAuth, function (req, res, next) {
 
 //修改管理员信息
 router.post('/update', adminAuth, function (req, res, next) {
-    const { id, username } = req.body;
-    updateAdmin(+id, username).then(() => {
+    const { id, username, avatar } = req.body;
+    updateAdmin(+id, username, avatar).then(() => {
         res.send({
             code: 0
         })
@@ -59,8 +59,8 @@ router.post('/update', adminAuth, function (req, res, next) {
 
 //新增管理员
 router.post('/add', adminAuth, function (req, res, next) {
-    const { username, password } = req.body;
-    addAdmin(username, md5(password)).then(() => {
+    const { username, password, avatar } = req.body;
+    addAdmin(username, md5(password), avatar).then(() => {
         res.send({
             code: 0
         })

@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 15:39:20
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:18:22
+ * @LastEditTime: 2021-04-19 16:37:40
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\layout\gloal\TableSearch.vue
@@ -58,7 +58,7 @@ export default {
             for (let j in arr) {
                 let item = arr[j];
                 if (item.value !== '' && item.unvalue !== item.value) {
-                    res[j] = props.defaultSearch;
+                    res[j] = item.value;
                 }
             }
             return res;

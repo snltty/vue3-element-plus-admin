@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 23:10:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 14:53:36
+ * @LastEditTime: 2021-04-19 17:13:45
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\services\admin.js
@@ -26,17 +26,22 @@ const adminTable = connection.define('admin', {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: ''
+    },
+    avatar: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: ''
     }
 });
 
-const getAdminApis = (id) => {
+const getAdminMenus = (id) => {
     return new Promise((resolve, reject) => {
         connection.query(`select 
-            role.apis
+            role.menus
               from power left join role on role.id=power.roleid left join admin on admin.id=power.adminid  where admin.id= :id`, {
             replacements: { id: id }, type: connection.QueryTypes.SELECT
         }).then((data) => {
-            resolve(Array.from(new Set(data.map(c => c.apis).join(',').split(','))));
+            resolve(Array.from(new Set(data.map(c => c.menus).join(',').split(','))));
         })
     })
 }
@@ -85,11 +90,14 @@ const deleteAdmin = (id = 0) => {
     })
 }
 
-const updateAdmin = (id = 0, username = '') => {
+const updateAdmin = (id = 0, username = '', avatar = '') => {
     return new Promise((resolve, reject) => {
 
+        console.log(id, username, avatar);
+
         adminTable.update({
-            username: username
+            username: username,
+            avatar: avatar
         }, {
             where: {
                 id: id
@@ -100,11 +108,12 @@ const updateAdmin = (id = 0, username = '') => {
     })
 }
 
-const addAdmin = (username = '', password = '') => {
+const addAdmin = (username = '', password = '', avatar = '') => {
     return new Promise((resolve, reject) => {
         adminTable.create({
             username: username,
-            password: password
+            password: password,
+            avatar: avatar,
         }).then((res) => {
             resolve(res);
         });
@@ -115,7 +124,7 @@ const addAdmin = (username = '', password = '') => {
 module.exports = {
     adminTable,
     getAdminByUsername,
-    getAdminApis,
+    getAdminMenus,
     getAdminPage,
     deleteAdmin,
     updateAdmin,

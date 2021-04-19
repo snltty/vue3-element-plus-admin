@@ -2,14 +2,12 @@
  * @Author: xr
  * @Date: 2021-03-20 21:19:21
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:16:26
+ * @LastEditTime: 2021-04-19 16:33:06
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\store\modules\menu.js
  */
 import config from '../../configs/index'
-import router from '../../router/index'
-
 
 const setCache = (state) => {
     sessionStorage.setItem('menu-cache', JSON.stringify(state));

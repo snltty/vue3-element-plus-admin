@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 21:38:05
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:41:23
+ * @LastEditTime: 2021-04-19 10:35:46
  * @version: v1.0.0
  * @Descripttion: 密码登录
  * @FilePath: \ui\src\views\login\Password.vue
@@ -11,10 +11,10 @@
     <div>
         <el-form :model="ruleForm" status-icon :rules="rules" ref="formDom" @keyup.enter="submitForm" label-width="0">
             <el-form-item label="" prop="pass">
-                <el-input prefix-icon="el-icon-date" v-model="ruleForm.name" autocomplete="off"></el-input>
+                <el-input prefix-icon="el-icon-date" v-model="ruleForm.username" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="" prop="checkPass">
-                <el-input prefix-icon="el-icon-date" type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                <el-input prefix-icon="el-icon-date" type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item class="t-c">
                 <el-button type="primary" @click="submitForm" style="width:100%" :loading="loading">立即登录</el-button>
@@ -25,19 +25,19 @@
 
 <script>
 import { reactive, ref, toRefs } from 'vue';
-import { passwordLogin } from '../../apis/login'
+import { login } from '../../apis/login'
 import { ElMessage } from 'element-plus'
 export default {
     emits: ['success'],
     setup (props, { emit }) {
         const formState = reactive({
             ruleForm: {
-                name: '',
-                pass: ''
+                username: process.env.NODE_ENV === 'production' ? '' : 'admin',
+                password: process.env.NODE_ENV === 'production' ? '' : '123456'
             },
             rules: {
-                name: [{ required: true, message: '请输入登录名', trigger: 'blur' }],
-                pass: [{ required: true, message: '请输入登录密码', trigger: 'blur' }],
+                username: [{ required: true, message: '请输入登录名', trigger: 'blur' }],
+                password: [{ required: true, message: '请输入登录密码', trigger: 'blur' }],
             },
             loading: false
         })
@@ -49,7 +49,7 @@ export default {
                 if (!valid) return;
 
                 formState.loading = true;
-                passwordLogin(formState.ruleForm.name, formState.ruleForm.pass).then(({ data, res }) => {
+                login(formState.ruleForm.username, formState.ruleForm.password).then(({ data, res }) => {
                     formState.loading = false;
                     if (data.code == 0) {
                         ElMessage.success({

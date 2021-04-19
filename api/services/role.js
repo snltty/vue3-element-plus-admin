@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 23:10:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-11 12:35:00
+ * @LastEditTime: 2021-04-19 10:45:29
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\services\role.js
@@ -28,6 +28,11 @@ const roleTable = connection.define('role', {
         defaultValue: ''
     },
     apis: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: ''
+    },
+    menus: {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: ''
@@ -75,13 +80,14 @@ const delRole = (id = 0) => {
     })
 }
 
-const updateRole = (id = 0, name = '', remark = '', apis = '') => {
+const updateRole = (id = 0, name = '', remark = '', apis = '', menus = '') => {
     return new Promise((resolve, reject) => {
 
         roleTable.update({
             name: name,
             remark: remark,
             apis: apis,
+            menus: menus,
         }, {
             where: {
                 id: id
@@ -92,12 +98,13 @@ const updateRole = (id = 0, name = '', remark = '', apis = '') => {
     })
 }
 
-const addRole = (name = '', remark = '', apis = '') => {
+const addRole = (name = '', remark = '', apis = '', menus = '') => {
     return new Promise((resolve, reject) => {
         roleTable.create({
             name: name,
             remark: remark,
-            apis: apis
+            apis: apis,
+            menus: menus
         }).then((res) => {
             resolve(res);
         });

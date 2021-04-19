@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-02 11:09:33
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:33:55
+ * @LastEditTime: 2021-04-19 17:00:44
  * @version: v1.0.0
  * @Descripttion: 多图上传
  * @FilePath: \ui\src\components\upload\MultipleImage.vue
@@ -43,19 +43,17 @@
 import { reactive, toRefs } from 'vue'
 import SelectFile from './SelectFile'
 import { ElMessage } from 'element-plus'
-import AliyunOSS from './oss'
+import { upload as uploadFile } from '../../apis/upload'
 export default {
     props: {
         //KB
         size: { type: Number, default: 500 },
         accept: { type: Array, default: ['image/jpg', 'image/png', 'image/gif', 'image/jpeg'] },
-        defaults: { type: String, default: '' },
-        path: { type: String, default: '/Uploads/xxx/xxx/' }
+        defaults: { type: String, default: '' }
     },
     components: { SelectFile },
     setup (props) {
 
-        const oss = new AliyunOSS();
         const state = reactive({
             acceptTypes: props.accept.map(c => c.split('/')[1]).join('/'),
             maxSize: props.size > 1024 ? `${(props.size / 1024).toFixed(2)}MB` : `${props.size}KB`,
@@ -92,12 +90,14 @@ export default {
                     for (let i = 0; i < state.showUrls.length; i++) {
                         let item = state.showUrls[i];
                         if (item.file != null) {
-                            let path = `${props.path.replace(/\/$/g, '')}/${Date.now()}${i}.${item.file.name.split('.').slice(-1)[0]}`;
-                            await oss.put(path, item.file);
-                            results.push({
-                                fullPath: path.addHost()[0],
-                                path: path
-                            })
+                            const res = await uploadFile(item.file);
+                            if (res.data.code == 0) {
+                                results.push({
+                                    fullPath: res.data.data.addHost()[0],
+                                    path: res.data.data
+                                })
+                            }
+
                         } else {
                             results.push({
                                 fullPath: item.url,
@@ -111,12 +111,7 @@ export default {
                 }
             });
         }
-        const del = (path) => {
-            if (path) {
-                oss.delete(`/${path.removeHost()}`);
-            }
-        }
-        return { ...toRefs(state), onFileChange, handleDel, upload, del }
+        return { ...toRefs(state), onFileChange, handleDel, upload }
     }
 }
 </script>

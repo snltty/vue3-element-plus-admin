@@ -2,17 +2,17 @@
  * @Author: xr
  * @Date: 2021-03-21 16:36:28
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:38:10
+ * @LastEditTime: 2021-04-19 09:43:39
  * @version: v1.0.0
- * @Descripttion: 所有菜单
+ * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\All.vue
 -->
 <template>
-    <div class="wrap all-menu flex flex-column">
+    <div class="wrap all-menu">
         <!-- <div class="search">
             <el-input class="all-menu-search" v-model="name" prefix-icon="el-icon-search" placeholder="请输入内容"></el-input>
         </div> -->
-        <div class="content flex-1 scrollbar">
+        <div class="content absolute scrollbar h-100">
             <div class="inner">
                 <div class="group" v-for="(item,index) in menus" :key="index">
                     <h3>{{index}}</h3>
@@ -111,7 +111,7 @@ export default {
 
             a, h5
                 display: block;
-                padding: 1rem;
+                padding: 0.6rem 1rem;
                 color: #666;
                 transition: 0.3s;
 

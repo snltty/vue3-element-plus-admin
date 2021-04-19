@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 13:31:09
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:18:10
+ * @LastEditTime: 2021-04-19 09:50:19
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\header\Logo.vue
@@ -27,10 +27,10 @@ export default {
 </script>
 <style lang="stylus" scoped>
 div
-    padding: 0.9rem 0;
+    padding: 0.9rem 0 0 2rem;
     font-size: 1.5rem;
-    width: 14rem;
-    text-align: center;
+    width: 16rem;
+    box-sizing: border-box;
 
 img
     height: 3rem;

@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-23 21:53:58
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 11:17:40
+ * @LastEditTime: 2021-04-19 10:30:58
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\configs\index.js
@@ -17,5 +17,5 @@ export default {
     , "loginName": "Login" //登录页面
 
     , "staticUrl": "http://localhost:3000/"  //静态资源地址   没有静态资源服务器就是api服务器
-    , "baseUrl": "http://localhost:3000/api/" //接口地址
+    , "baseUrl": "http://localhost:3000/private" //接口地址
 }

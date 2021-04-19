@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 22:26:44
  * @LastEditors: xr
- * @LastEditTime: 2021-04-11 18:05:38
+ * @LastEditTime: 2021-04-19 10:29:32
  * @version: v1.0.0
  * @Descripttion: 后端接口
  * @FilePath: \api\apis\private\index.js
@@ -28,22 +28,7 @@ router.use('/admin', admin);
 const role = require('./role');
 router.use('/role', role);
 
-const goods = require('./goods');
-router.use('/goods', goods);
-
-const goodscate = require('./goodscate');
-router.use('/goodscate', goodscate);
-
 const upload = require('./upload');
 router.use('/upload', upload);
-
-const user = require('./user');
-router.use('/user', user);
-
-const address = require('./address');
-router.use('/address', address);
-
-const order = require('./order');
-router.use('/order', order);
 
 module.exports = router;

@@ -2,45 +2,27 @@
  * @Author: xr
  * @Date: 2021-03-20 13:05:57
  * @LastEditors: xr
- * @LastEditTime: 2021-04-12 09:26:26
+ * @LastEditTime: 2021-04-19 16:24:21
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\Index.vue
 -->
 <template>
-    <section class="menu relative main-left-menu">
-        <section class="wrap h-100" :class="{unfold:unfold}">
-            <section class="ul">
-                <section class="item action">
-                    <a href="javascript:;" class="flex item-a" @click="handleTriggerFold">
-                        <i class="icon el-icon-s-unfold"></i><i class="icon el-icon-s-fold"></i>
-                        <span class="text flex-1">菜单列表</span>
-                    </a>
-                </section>
-                <section class="item all-item">
-                    <a href="javascript:;" class="flex item-a">
-                        <i class="icon iconfont iconquanbu1"></i>
-                        <span class="text flex-1">所有菜单</span>
-                        <span class="right-icon"><i class="el-icon-arrow-right"></i></span>
-                    </a>
-                    <div class="all">
-                        <All></All>
-                    </div>
-                </section>
-            </section>
-            <EchMenu :childs="menus" :auths="authMenus" :opens="openMenus" v-slot:default="slotProps">
-                <a href="javascript:;" class="flex item-a" @click="handleTriggerMenu(slotProps.item.name)" v-if="slotProps.item.children && slotProps.item.children.length > 0">
-                    <i v-if="slotProps.item.meta.ifont" class="icon iconfont" :class="slotProps.item.meta.ifont"></i>
-                    <i v-else-if="slotProps.item.meta.icon" class="icon" :class="slotProps.item.meta.icon"></i>
-                    <span class="text flex-1">{{slotProps.item.meta.name}}</span>
-                    <span class="more-icon"><i class="el-icon-arrow-right"></i><i class="el-icon-arrow-down"></i></span>
-                </a>
-                <router-link :to="{name:slotProps.item.name}" class="flex item-a" :class="{current:slotProps.item.name == $route.name}" v-else>
-                    <i v-if="slotProps.item.meta.ifont" class="icon iconfont" :class="slotProps.item.meta.ifont"></i>
-                    <i v-else-if="slotProps.item.meta.icon" class="icon" :class="slotProps.item.meta.icon"></i>
-                    <span class="text flex-1">{{slotProps.item.meta.name}}</span>
-                </router-link>
-            </EchMenu>
+    <section class="menu relative main-left-menu" :class="{collapse:collapse}">
+        <section class="wrap h-100">
+            <div class="all">
+                <div class="flex" @click="collapse = !collapse">
+                    <i class="iconfont iconquanbu1"></i>
+                    <span class="flex-1">全部菜单</span>
+                    <i class="el-icon-arrow-right"></i>
+                </div>
+                <div class="all-wrap h-100">
+                    <All></All>
+                </div>
+            </div>
+            <el-menu :collapse="collapse" @select="handleSelect" background-color="#fafafa" :default-active="$route.name">
+                <EchMenu :childs="menus" :auths="authMenus"></EchMenu>
+            </el-menu>
         </section>
     </section>
 </template>
@@ -57,57 +39,10 @@ export default {
         const router = useRouter();
         const route = useRoute();
         const state = reactive({
-            unfold: true
+            collapse: false
         });
-        const handleTriggerFold = () => state.unfold = !state.unfold;
-
-        //打开的菜单
-        const triggerMenus = ref([]);
-        const getIsIndex = (name) => {
-            let index = -1;
-            for (let i = 0; i < triggerMenus.value.length; i++) {
-                if (triggerMenus.value[i] == name) {
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-        const _getSameLvelMenus = (list, name) => {
-            let has = list.filter(c => c.name == name).length > 0;
-            if (has) {
-                return list.filter(c => c.name != name).map(c => c.name);
-            }
-            for (let i = 0; i < list.length; i++) {
-                if (list[i].children) {
-                    let res = _getSameLvelMenus(list[i].children, name);
-                    if (res.length > 0) {
-                        return res;
-                    }
-                }
-            }
-            return [];
-        }
-        const getSameLevelMenus = (name) => {
-            return _getSameLvelMenus(router.options.routes.filter(c => c.name == 'Layout')[0].children, name);
-        }
-        const handleTriggerMenu = (name) => {
-            let index = getIsIndex(name);
-            if (index >= 0) {
-                triggerMenus.value.splice(index, 1);
-            } else {
-                triggerMenus.value.push(name);
-            }
-            //关闭同级其它菜单
-            let sameLvelMenus = getSameLevelMenus(name);
-            if (sameLvelMenus.length > 0) {
-                triggerMenus.value = triggerMenus.value.filter(c => sameLvelMenus.indexOf(c) === -1);
-            }
-        }
 
         const { changeGroup } = myMapActions('menu', ['changeGroup'])
-        //打开的菜单 被点击的和当前路由所在的 都打开
-        const openMenus = computed(() => triggerMenus.value.concat(route.matched.map(c => c.name)))
         const { group, authMenus } = myMapStates('menu', {
             group: (state) => computed(() => state.group),
             authMenus: (state) => computed(() => state.authMenus)
@@ -132,119 +67,77 @@ export default {
             })
         })
 
+        const handleSelect = (key, keyPath) => {
+            router.push({ name: key });
+        }
+
         return {
-            ...toRefs(state), handleTriggerFold,
-            menus, authMenus, handleTriggerMenu, openMenus
+            ...toRefs(state),
+            menus, authMenus, handleSelect
         }
     }
 }
 </script>
-<style lang="stylus" scoped>
-section.wrap
-    width: 4rem;
+<style lang="stylus">
+.main-left-menu
     border-right: 1px solid var(--main-border-color);
+    width: 16rem;
+    background-color: #fafafa;
     transition: 0.3s;
-    box-shadow: 0.4rem 0rem 0.6rem rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: 9;
-    background-color: #f1f1f1;
 
-    &.unfold
-        width: 14rem;
+    &.collapse
+        width: 6.4rem;
 
-        .item
-            a.item-a
-                span.right-icon, span.more-icon, span.text
-                    display: block;
+        .all
+            .all-wrap
+                left: 6.5rem;
 
-        section.ul
-            section.action
-                .el-icon-s-unfold
-                    display: none;
+    .all
+        padding-left: 2rem;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
 
-                .el-icon-s-fold
-                    display: block;
+        .flex
+            height: 3.8rem;
+            line-height: 3.8rem;
+            font-size: 1.3rem;
+            white-space: nowrap;
+            overflow: hidden;
 
-section.ul
-    section.item
-        &.all-item
-            border-bottom: 1px solid var(--main-border-color);
+            .iconfont
+                font-size: 1.8rem;
+                vertical-align: middle;
+                margin-right: 0.5px;
+                width: 2.4rem;
+                text-align: center;
+                font-weight: 400;
 
-            .all
-                position: absolute;
-                left: 101%;
-                top: 0;
-                bottom: 0;
-                display: none;
-                z-index: 3;
+            i[class^=el-icon-]
+                line-height: inherit;
+                margin-right: 2rem;
 
-        &.all-item:hover
-            .all
+        .all-wrap
+            position: absolute;
+            left: 16.1rem;
+            top: 0;
+            z-index: 9999;
+            display: none;
+            transition: 0.3s;
+
+        &:hover
+            .all-wrap
                 display: block;
 
-        &.action
-            display: none;
-            background-color: #e5e5e5;
-            border-bottom: 1px solid var(--main-border-color);
+.el-menu-item, .el-submenu__title
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.3rem;
 
-            a
-                color: #666;
+.el-submenu .el-menu-item
+    height: 4rem;
+    line-height: 4rem;
+    min-width: auto;
 
-                .el-icon-s-unfold
-                    display: block;
-
-                .el-icon-s-fold
-                    display: none;
-
-        &.open
-            background-color: #f5f5f5;
-
-            &>a.item-a
-                span.more-icon
-                    .el-icon-arrow-down
-                        display: block;
-
-                    .el-icon-arrow-right
-                        display: none;
-
-        a.item-a
-            padding: 0.9rem 1rem;
-            color: #555;
-            font-size: 1.2rem;
-
-            &.open+ul
-                height: auto;
-
-            &:hover, &.current
-                color: var(--main-color);
-                font-weight: bold;
-
-            &.current
-                .more-icon
-                    .el-icon-arrow-down
-                        display: block;
-
-                    .el-icon-arrow-right
-                        display: none;
-
-                    i
-                        vertical-align: middle;
-
-            span.right-icon, span.more-icon, span.text
-                display: none;
-
-            span.text
-                line-height: 1.8rem;
-
-            span.right-icon, span.more-icon
-                color: #ccc;
-
-            span.more-icon
-                .el-icon-arrow-down
-                    display: none;
-
-            i.icon
-                font-size: 1.8rem;
-                vertical-align: top;
-                margin-right: 0.4rem;
+.el-menu
+    border: 0;
 </style>
