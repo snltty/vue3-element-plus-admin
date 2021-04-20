@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 16:36:28
  * @LastEditors: xr
- * @LastEditTime: 2021-04-20 11:27:40
+ * @LastEditTime: 2021-04-20 12:26:45
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\All.vue
@@ -81,7 +81,6 @@ export default {
             });
             return res;
         });
-        console.log(menus);
 
         return {
             menus

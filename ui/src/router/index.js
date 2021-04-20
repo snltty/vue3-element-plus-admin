@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 12:05:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 10:55:55
+ * @LastEditTime: 2021-04-20 16:15:00
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\router\index.js
@@ -94,25 +94,11 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
-    console.time('路由守卫时间');
-    let isnext = true;
-    for (let j in eachs) {
-        let funs = eachs[j];
-        for (let k in funs) {
-            if (!funs[k](to, from, next, router)) {
-                isnext = false;
-                break;
-            }
-        }
-        if (!isnext) {
-            break;
-        }
+for (let j in eachs) {
+    let funs = eachs[j];
+    for (let k in funs) {
+        router.beforeEach(funs[k]);
     }
-    console.timeEnd('路由守卫时间');
-    if (isnext) {
-        next();
-    }
-})
+}
 
 export default router

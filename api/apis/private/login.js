@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 22:31:38
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 10:42:00
+ * @LastEditTime: 2021-04-20 15:49:38
  * @version: v1.0.0
  * @Descripttion: 后端登录相关接口
  * @FilePath: \api\apis\private\login.js
@@ -56,6 +56,14 @@ router.post('/login', function (req, res, next) {
             });
         }
     })
+});
+
+//获取登录信息
+router.get('/info', function (req, res, next) {
+    res.send({
+        code: 0,
+        data: req.admin
+    });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 20:45:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 15:21:06
+ * @LastEditTime: 2021-04-20 16:06:10
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\login\Index.vue
@@ -42,7 +42,7 @@ export default {
         const onSuccess = (data) => {
             //保存token什么的,然后跳转到首页 
             setLoginInfo({
-                user: { admin: true, ...data.data.admin }
+                user: data.data.admin
             });
             setToken(data.data.token);
             router.push('/');

@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 22:02:17
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 10:32:00
+ * @LastEditTime: 2021-04-20 15:48:34
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\apis\login.js
@@ -23,6 +23,19 @@ export const login = (username, password) => {
     return new Promise((resolve, reject) => {
         request.post({
             url: 'login/login', data: { username, password }
+        }).then((res) => {
+            resolve({
+                data: res.data
+                , res
+            });
+        })
+    })
+}
+
+export const loginInfo = () => {
+    return new Promise((resolve, reject) => {
+        request.get({
+            url: 'login/info'
         }).then((res) => {
             resolve({
                 data: res.data
