@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 13:05:57
  * @LastEditors: xr
- * @LastEditTime: 2021-04-20 11:26:46
+ * @LastEditTime: 2021-04-20 16:35:08
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\Index.vue
@@ -128,16 +128,16 @@ export default {
             .all-wrap
                 display: block;
 
-.el-menu-item, .el-submenu__title
-    height: 4rem;
-    line-height: 4rem;
-    font-size: 1.3rem;
+    .el-menu-item, .el-submenu__title
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 1.3rem;
 
-.el-submenu .el-menu-item
-    height: 4rem;
-    line-height: 4rem;
-    min-width: auto;
+    .el-submenu .el-menu-item
+        height: 4rem;
+        line-height: 4rem;
+        min-width: auto;
 
-.el-menu
-    border: 0;
+    .el-menu
+        border: 0;
 </style>
