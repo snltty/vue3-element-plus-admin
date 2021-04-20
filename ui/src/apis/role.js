@@ -2,10 +2,10 @@
  * @Author: xr
  * @Date: 2021-03-21 22:02:17
  * @LastEditors: xr
- * @LastEditTime: 2021-04-20 11:12:16
+ * @LastEditTime: 2021-04-20 10:54:07
  * @version: v1.0.0
  * @Descripttion: 功能说明
- * @FilePath: \ui\src\apis\admin.js
+ * @FilePath: \ui\src\apis\role.js
  */
 import config from '../configs/index'
 import Request from '../libs/request/index'
@@ -19,11 +19,11 @@ request.instance.interceptors.request.use(config => {
     return Promise.reject(err);
 });
 
-export const getAdmins = ({ p = 1, ps = 10, username = '', sort = 'id desc' }) => {
+export const getRoles = ({ p = 1, ps = 10, name = '', id = '', sort = 'id desc' }) => {
     return new Promise((resolve, reject) => {
         request.get({
-            url: 'admin/page', params: {
-                p, ps, username, sort
+            url: 'role/page', params: {
+                p, ps, name, id, sort
             }
         }).then((res) => {
             resolve({
@@ -34,10 +34,10 @@ export const getAdmins = ({ p = 1, ps = 10, username = '', sort = 'id desc' }) =
     })
 }
 
-export const addAdmin = (data) => {
+export const addRole = (data) => {
     return new Promise((resolve, reject) => {
         request.post({
-            url: 'admin/add', data: data
+            url: 'role/add', data: data
         }).then((res) => {
             resolve({
                 data: res.data
@@ -47,10 +47,10 @@ export const addAdmin = (data) => {
     })
 }
 
-export const updateAdmin = (data) => {
+export const updateRole = (data) => {
     return new Promise((resolve, reject) => {
         request.post({
-            url: 'admin/update', data: data
+            url: 'role/update', data: data
         }).then((res) => {
             resolve({
                 data: res.data
@@ -60,37 +60,10 @@ export const updateAdmin = (data) => {
     })
 }
 
-export const deleteAdmin = (id) => {
+export const deleteRole = (id) => {
     return new Promise((resolve, reject) => {
         request.post({
-            url: 'admin/delete', params: { id }
-        }).then((res) => {
-            resolve({
-                data: res.data
-                , res
-            });
-        })
-    })
-}
-
-
-export const getPower = (adminid) => {
-    return new Promise((resolve, reject) => {
-        request.get({
-            url: 'admin/power', params: { adminid }
-        }).then((res) => {
-            resolve({
-                data: res.data
-                , res
-            });
-        })
-    })
-}
-
-export const setPower = (adminid, rids = '') => {
-    return new Promise((resolve, reject) => {
-        request.post({
-            url: 'admin/power', data: { adminid, rids }
+            url: 'role/delete', params: { id }
         }).then((res) => {
             resolve({
                 data: res.data

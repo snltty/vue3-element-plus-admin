@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 12:14:01
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 10:47:40
+ * @LastEditTime: 2021-04-20 09:59:01
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\config\admin\role\Add.vue
@@ -10,11 +10,14 @@
 <template>
     <el-dialog title="角色" destroy-on-close v-model="show" center :close-on-click-modal="false" width="300px">
         <el-form ref="formDom" :model="form" :rules="rules" label-width="60px">
-            <el-form-item label="名称" prop="Name">
-                <el-input v-model="form.Name"></el-input>
+            <el-form-item label="名称" prop="name">
+                <el-input v-model="form.name"></el-input>
+            </el-form-item>
+            <el-form-item label="备注" prop="remark">
+                <el-input v-model="form.remark"></el-input>
             </el-form-item>
             <el-form-item label="" label-width="0">
-                <el-tree :data="menus" node-key="id" ref="tree" show-checkbox :default-checked-keys="form.Menus" :check-strictly="strictly"></el-tree>
+                <el-tree :data="menus" node-key="id" ref="tree" show-checkbox :default-checked-keys="form.menus" :check-strictly="strictly"></el-tree>
             </el-form-item>
         </el-form>
         <template #footer>
@@ -27,7 +30,8 @@
 <script>
 import { reactive, ref, toRefs, watch, inject, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
+import { addRole, updateRole } from '../../../../apis/role'
 const getChilds = (arr) => {
     let res = [];
     for (let i = 0; i < arr.length; i++) {
@@ -42,7 +46,7 @@ const getChilds = (arr) => {
 }
 export default {
     props: ['modelValue'],
-    emits: ['success'],
+    emits: ['update:modelValue', 'success'],
     setup (props, { emit }) {
         const router = useRouter();
         const addEditData = inject('add-edit-data');
@@ -50,12 +54,13 @@ export default {
             show: props.modelValue,
             loading: false,
             form: {
-                ID: addEditData.value.ID,
-                Name: addEditData.value.Name || '',
-                Menus: (addEditData.value.Menus || '').split(',').filter(c => c.length > 0)
+                id: addEditData.value.id || 0,
+                name: addEditData.value.name || '',
+                remark: addEditData.value.remark || '',
+                menus: (addEditData.value.menus || '').split(',').filter(c => c.length > 0)
             },
             rules: {
-                Name: [
+                name: [
                     { required: true, message: '必填', trigger: 'blur' },
                     { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
                 ]
@@ -85,10 +90,24 @@ export default {
                 if (!valid) {
                     return false;
                 }
+                state.loading = true;
 
                 let form = JSON.parse(JSON.stringify(state.form))
-                form.Menus = tree.value.getCheckedNodes(false, true).map(c => c.id).join(',');
-                state.loading = true;
+                form.menus = tree.value.getCheckedNodes(false, true).map(c => c.id).join(',');
+
+                //选择新增还是更新
+                const fn = form.id > 0 ? updateRole : addRole;
+                fn(form).then(({ data, res }) => {
+                    state.loading = false;
+                    if (data.code == 0) {
+                        state.show = false;
+                        emit('success');
+                    } else {
+                        ElMessageBox.alert(data.msg, { type: 'error' });
+                    }
+                }).catch((err) => {
+                    state.loading = false;
+                });
             })
         }
 

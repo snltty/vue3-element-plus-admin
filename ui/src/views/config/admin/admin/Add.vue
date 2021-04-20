@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 12:14:01
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 17:08:06
+ * @LastEditTime: 2021-04-20 09:59:10
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\config\admin\admin\Add.vue
@@ -31,10 +31,10 @@
 import { reactive, ref, toRefs, watch, inject } from 'vue'
 import SingleImage from '../../../../components/upload/SingleImage'
 import { addAdmin, updateAdmin } from '../../../../apis/admin'
-import { ElMessage } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 export default {
     props: ['modelValue'],
-    emits: ['success'],
+    emits: ['update:modelValue', 'success'],
     components: { SingleImage },
     setup (props, { emit }) {
         const formDom = ref(null);
@@ -86,10 +86,9 @@ export default {
                         state.loading = false;
                         if (data.code == 0) {
                             state.show = false;
-                            ElMessage.success('操作成功');
                             emit('success');
                         } else {
-                            ElMessage.error(data.msg);
+                            ElMessageBox.alert(data.msg, { type: 'error' });
                         }
                     }).catch((err) => {
                         state.loading = false;

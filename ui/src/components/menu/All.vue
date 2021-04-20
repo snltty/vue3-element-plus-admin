@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 16:36:28
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 09:43:39
+ * @LastEditTime: 2021-04-20 11:27:40
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\All.vue
@@ -46,8 +46,7 @@ export default {
         const router = useRouter();
         const { authMenus } = myMapStates('menu', {
             authMenus: (state) => computed(() => state.authMenus)
-        })
-
+        });
         const getChildren = (arr) => {
             let res = [];
             for (let i = 0; i < arr.length; i++) {
@@ -68,18 +67,21 @@ export default {
             let groups = router.options.routes.filter(c => c.name == 'Layout')[0].children;
             let res = {};
             groups.map(group => {
-                res[group.meta.name] = group.children.filter(c => authMenus.value.indexOf(c.name) >= 0).map(item => {
-                    let childs = (item.children || []).filter(c => authMenus.value.indexOf(c.name) >= 0);
-                    return {
-                        name: item.name,
-                        text: item.meta.name,
-                        hasChild: childs.length > 0,
-                        children: getChildren(childs)
-                    }
-                })
+                if (authMenus.value.indexOf(group.name) >= 0) {
+                    res[group.meta.name] = group.children.filter(c => authMenus.value.indexOf(c.name) >= 0).map(item => {
+                        let childs = (item.children || []).filter(c => authMenus.value.indexOf(c.name) >= 0);
+                        return {
+                            name: item.name,
+                            text: item.meta.name,
+                            hasChild: childs.length > 0,
+                            children: getChildren(childs)
+                        }
+                    })
+                }
             });
             return res;
         });
+        console.log(menus);
 
         return {
             menus

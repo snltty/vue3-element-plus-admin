@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 16:04:17
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:15:34
+ * @LastEditTime: 2021-04-20 11:00:21
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\gloal\ChoiceDialog.vue
@@ -42,9 +42,10 @@
             <el-button type="primary" :loading="loading" @click="handleSubmit">确 定</el-button>
         </template>
     </el-dialog>
-    <div @click="handleShow">
+    <slot name="data" :data="callbackData"></slot>
+    <span @click="handleShow">
         <slot :data="callbackData"></slot>
-    </div>
+    </span>
 </template>
 
 <script>
@@ -52,20 +53,24 @@ import { reactive, toRefs, watch, ref, onMounted, nextTick } from 'vue'
 import choiceDialogConfig from './choice-dialog-config'
 export default {
     props: {
-        modelValue: { type: [String, Number], default: 0 },
+        //以下三个常用
+        modelValue: { type: [String, Number], default: 0 }, //v-model 值
+        name: { type: String, default: 'user' },    //选择name  表示要选择什么  在配置里看都有什么
+        selection: { type: String, default: 'multiple' }, // single  选择类型 单选或者多选
+
+        //以下不常用
         width: { type: String, default: '800px' },
-        name: { type: String, default: 'user' },
-        columns: { type: Array, default: [] },
-        searchData: { type: Object, default: {} },
-        title: { type: String, default: '' },
-        selection: { type: String, default: 'multiple' }, // single
-        defaultSearch: { type: Array, default: {} },
-        disabled: { type: Boolean, default: false },
+        title: { type: String, default: '' },       //标题
+        columns: { type: Array, default: [] },  //显示哪些字段
+
+        searchData: { type: Object, default: {} },  //需要哪些搜索
+        defaultSearch: { type: Object, default: {} },    //默认搜索
+
+        disabled: { type: Boolean, default: false },    //是否禁用
     },
     emits: ['update:modelValue', 'success'],
     setup (props, { emit }) {
         const { api, columns, searchData, title, key, defaultSearch } = choiceDialogConfig[props.name];
-        let defaultValue = props.modelValue;
         const state = reactive({
             show: false,
             columns: props.columns.length > 0 ? props.columns : columns,
@@ -86,8 +91,11 @@ export default {
             if (val) {
                 nextTick(() => {
                     getData();
-                });
+                })
             }
+        });
+        watch(() => props.modelValue, (val) => {
+            getDefaults(val);
         });
 
         const tableDom = ref(null);
@@ -95,22 +103,38 @@ export default {
         let selections = [];
         const getData = () => {
             state.loading = true;
-            let params = {};
-            if (defaultValue) {
-                params[key] == defaultValue;
-            } else {
-                params = searchDom.value.getParams();
-                if (defaultSearch && defaultSearch.length > 0) {
-                    params = Object.assign(params, defaultSearch)
-                }
-                if (props.defaultSearch) {
-                    params = Object.assign(props.defaultSearch);
-                }
+            let params = searchDom.value.getParams();
+            if (defaultSearch && defaultSearch.length > 0) {
+                params = Object.assign(params, defaultSearch)
             }
-            api(state.page.p, state.page.ps, `${key} DESC`, params).then(({ data, res }) => {
+            if (props.defaultSearch) {
+                params = Object.assign(props.defaultSearch);
+            }
+            api({
+                p: state.page.p, ps: state.page.ps, sort: `${key} DESC`, ...params
+            }).then(({ data, res }) => {
                 if (data.code == 0) {
                     state.page = data.data;
-                    if (defaultValue && data.data.rows.length > 0) {
+                    if (props.selection == 'multiple') {
+                        state.callbackData.forEach(c => {
+                            tableDom.value.toggleRowSelection(c, true);
+                        })
+                    }
+                }
+                state.loading = false;
+            })
+        }
+
+        const getDefaults = (val) => {
+            if (!val) return;
+            let params = {
+                [key]: val
+            }
+            api({
+                p: 1, ps: 100000, sort: `${key} DESC`, ...params
+            }).then(({ data, res }) => {
+                if (data.code == 0) {
+                    if (data.data.rows.length > 0) {
                         handleUpdateValue(data.data.rows);
                     }
                 }
@@ -118,13 +142,8 @@ export default {
             })
         }
         onMounted(() => {
-            nextTick(() => {
-                if (defaultValue) {
-                    getData();
-                }
-            });
+            getDefaults(props.modelValue);
         })
-
 
         const onPageChange = (p) => {
             state.page.p = p;
@@ -133,7 +152,6 @@ export default {
 
         const handleShow = () => {
             if (!state.disabled) {
-                defaultValue = 0;
                 state.show = true;
             }
         }

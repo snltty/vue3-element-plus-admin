@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-20 13:05:57
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 16:24:21
+ * @LastEditTime: 2021-04-20 11:26:46
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\menu\Index.vue
@@ -97,7 +97,7 @@ export default {
         border-bottom: 1px solid #ddd;
         cursor: pointer;
 
-        .flex
+        &>.flex
             height: 3.8rem;
             line-height: 3.8rem;
             font-size: 1.3rem;

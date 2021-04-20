@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 23:10:07
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 10:45:29
+ * @LastEditTime: 2021-04-20 10:43:37
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \api\services\role.js
@@ -49,13 +49,16 @@ const getRoleAll = () => {
 }
 
 const getRolePage = ({
-    p = 1, ps = 10, name = '', sort = 'id desc'
+    p = 1, ps = 10, name = '', id = '', sort = 'id desc'
 }) => {
     return new Promise((resolve, reject) => {
         let sorts = sort.replace(/\s{1,}/g, ' ').replace(/^\s|\s$/g, '').split(' ');
         let where = {};
         if (name) {
             where['name'] = { [Sequelize.Op.like]: '%' + name + '%' };
+        }
+        if (id) {
+            where['id'] = { [Sequelize.Op.in]: (id + '').split(',').map(c => +c) };
         }
         roleTable.findAndCountAll({
             order: [sorts],
