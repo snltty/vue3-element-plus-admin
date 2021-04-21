@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-22 15:32:36
  * @LastEditors: xr
- * @LastEditTime: 2021-04-20 16:13:11
+ * @LastEditTime: 2021-04-21 13:32:12
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\router\eachs\menu.js
@@ -21,10 +21,9 @@ const getAllMenuName = (options) => {
 }
 
 const each = (to, from, next) => {
-    const menu = store.state.menu;
     const user = store.state.login.loginInfo.user;
 
-    if (menu.inited === false && to.name != config.loginName) {
+    if (store.state.menu.inited === false && to.name != config.loginName) {
         console.time('菜单初始化时间');
         if (config.menuAuth === false || user.superadmin === true) {
             let menus = getAllMenuName(router.options.routes);
@@ -38,7 +37,7 @@ const each = (to, from, next) => {
         console.timeEnd('菜单初始化时间');
     }
     //首页   登录页 或者 有权限的页面 验证通过， 否则跳转到首页
-    if (to.name == config.homeName || to.name == config.loginName || menu.authMenus.indexOf(to.name) >= 0) {
+    if (to.name == config.homeName || to.name == config.loginName || store.state.menu.authMenus.indexOf(to.name) >= 0) {
         return next();
     }
     return next({ name: config.homeName });
