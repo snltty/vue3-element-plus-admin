@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 11:10:14
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 17:19:53
+ * @LastEditTime: 2021-04-21 13:30:29
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\views\config\admin\admin\Index.vue
@@ -10,10 +10,11 @@
 <template>
     <TableView>
         <template v-slot:search>
-            <TableSearch ref="searchDom" :data="searchData" @submit="getData"></TableSearch>
-        </template>
-        <template v-slot:head>
-            <el-button type="primary" size="mini" @click="handleAdd" icon="el-icon-circle-plus">添加</el-button>
+            <TableSearch ref="searchDom" :data="searchData" @submit="getData">
+                <el-form-item>
+                    <el-button type="primary" size="mini" @click="handleAdd" icon="el-icon-circle-plus">添加</el-button>
+                </el-form-item>
+            </TableSearch>
         </template>
         <template v-slot:body>
             <el-table v-loading="loading" :data="page.rows" size="mini" border height='100%' stripe>

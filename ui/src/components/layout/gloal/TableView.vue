@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-21 19:17:44
  * @LastEditors: xr
- * @LastEditTime: 2021-04-18 15:18:42
+ * @LastEditTime: 2021-04-21 13:29:58
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\layout\gloal\TableView.vue
@@ -10,11 +10,8 @@
 <template>
     <div class="h-100 relative">
         <div class="absolute  flex flex-column flex-nowrap">
-            <div class="table-search" v-if="search">
+            <div class="table-search">
                 <slot name="search"></slot>
-            </div>
-            <div class="table-head" v-if="head">
-                <slot name="head"></slot>
             </div>
             <div class="table-body flex-1 relative">
                 <div class="body-inner absolute">
@@ -46,7 +43,7 @@ export default {
 .table-search
     border: 1px solid var(--main-border-color);
     border-bottom: 0;
-    padding: 0.6rem;
+    padding: 0.6rem 1rem;
     background-color: #fcfcfc;
 
 .table-foot

@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-03-31 15:39:20
  * @LastEditors: xr
- * @LastEditTime: 2021-04-19 16:37:40
+ * @LastEditTime: 2021-04-21 13:29:25
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\layout\gloal\TableSearch.vue
@@ -10,14 +10,18 @@
 <template>
     <el-form :inline="true" :model="data" class="demo-form-inline">
         <slot></slot>
-        <el-form-item :label="item.text" v-for="(item,name,index) in data" :key="index" class="w-search">
+        <el-form-item v-for="(item,name,index) in data" :key="index" class="w-search">
             <template v-if="item.type == 'select'">
-                <el-select class="w-search" size="mini" v-model="item.value" placeholder="请选择" @change="$emit('change',{name:name,type:item.type})">
-                    <el-option v-for="(sitem,sindex) in item.options" :key="sindex" :label="sitem.text" :value="sitem.value"></el-option>
-                </el-select>
+                <el-tooltip :content="item.text" placement="bottom">
+                    <el-select class="w-search" size="mini" v-model="item.value" placeholder="请选择" @change="$emit('change',{name:name,type:item.type})">
+                        <el-option v-for="(sitem,sindex) in item.options" :key="sindex" :label="sitem.text" :value="sitem.value"></el-option>
+                    </el-select>
+                </el-tooltip>
             </template>
             <template v-else>
-                <el-input v-model="item.value" :placeholder="item.text" size="mini" class="w-search"></el-input>
+                <el-tooltip :content="item.text" placement="bottom">
+                    <el-input v-model="item.value" :placeholder="item.text" size="mini" class="w-search"></el-input>
+                </el-tooltip>
             </template>
         </el-form-item>
         <el-form-item>

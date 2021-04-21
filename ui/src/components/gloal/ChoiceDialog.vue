@@ -2,7 +2,7 @@
  * @Author: xr
  * @Date: 2021-04-09 16:04:17
  * @LastEditors: xr
- * @LastEditTime: 2021-04-20 11:00:21
+ * @LastEditTime: 2021-04-21 13:28:34
  * @version: v1.0.0
  * @Descripttion: 功能说明
  * @FilePath: \ui\src\components\gloal\ChoiceDialog.vue
@@ -12,7 +12,7 @@
         <div class="wrap">
             <TableView :head="false">
                 <template v-slot:search>
-                    <TableSearch ref="searchDom" :data="searchData" @submit="getData"></TableSearch>
+                    <TableSearch ref="searchDom" :data="searchDataValue" @submit="getData"></TableSearch>
                 </template>
                 <template v-slot:body>
                     <el-table ref="tableDom" v-loading="loading" :data="page.rows" :row-key="key" @selection-change="handleSelectionChange" size="mini" border height='100%' stripe>
@@ -20,7 +20,7 @@
                             <el-table-column type="selection" width="55" :reserve-selection="true"></el-table-column>
                         </template>
                         <el-table-column :prop="key" :label="key" width="100"></el-table-column>
-                        <template v-for="(item,index) in columns" :key="index">
+                        <template v-for="(item,index) in columnsValue" :key="index">
                             <el-table-column :prop="item.name" :label="item.text"></el-table-column>
                         </template>
                         <template v-if="selection == 'single'">
@@ -73,8 +73,8 @@ export default {
         const { api, columns, searchData, title, key, defaultSearch } = choiceDialogConfig[props.name];
         const state = reactive({
             show: false,
-            columns: props.columns.length > 0 ? props.columns : columns,
-            searchData: Object.keys(props.searchData) > 0 ? props.searchData : searchData,
+            columnsValue: props.columns.length > 0 ? props.columns : columns,
+            searchDataValue: Object.keys(props.searchData) > 0 ? props.searchData : searchData,
             title: props.title ? props.title : title,
             disabled: props.disabled,
             callbackData: [],
